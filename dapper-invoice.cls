@@ -21,6 +21,7 @@
 \ifthenelse{\equal{\dapper@currency}{dollar}}{\newcommand{\currencysym}{\$}}{}
 \ifthenelse{\equal{\dapper@currency}{euro}}{\newcommand{\currencysym}{\euro}}{}
 \ifthenelse{\equal{\dapper@currency}{pound}}{\newcommand{\currencysym}{\textsterling}}{}
+\ifthenelse{\equal{\dapper@currency}{swiss}}{\newcommand{\currencysym}{CHF }}{}
 
 % Set the standard geometry
 \RequirePackage[hmargin=.75in,vmargin=1in]{geometry}
@@ -277,7 +278,8 @@
 %%%%% Styles %%%%%
 
 \RequirePackage{xcolor}
-\definecolor{highlightColor}{rgb}{0.22,0.45,0.70}% light blue
+%\definecolor{highlightColor}{rgb}{0.22,0.45,0.70}% light blue
+\definecolor{highlightColor}{rgb}{0.22,0.60,0.22}% light green
 \definecolor{subduedColor}{rgb}{0.45,0.45,0.45}% dark grey
 
 \def\headerStyle{\Huge}
