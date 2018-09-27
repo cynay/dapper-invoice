@@ -1,0 +1,105 @@
+%\documentclass[letterpaper]{dapper-invoice}
+\documentclass[a4paper,currency=swiss]{dapper-invoice}
+%\documentclass[letterpaper,currency=dollar]{dapper-invoice}
+%\documentclass[letterpaper,currency=euro]{dapper-invoice}
+%\documentclass[letterpaper,currency=pound]{dapper-invoice}
+
+\newcommand{\invoiceNo}{180101}
+\newcommand{\balance}{3010}
+\newcommand{\duein}{15}% days
+
+\newcommand{\me}{Yannic Schneider}
+\newcommand{\clientName}{MBA Consulting GmbH}
+
+\setmetadata{\me}{SCHNEIDER SYSTEMS}{\invoiceNo}{\clientName}
+
+\defaultfontfeatures{ Path = ./Fonts/ }
+\usepackage{fontawesome}
+
+\begin{document}
+
+\newfontface\mainLightItalic{OpenSans-LightItalic}
+%\makeheader{SCHNEIDER\ \mainLightItalic \\ SYSTEMS}{\invoiceNo}
+\makeheader{\includegraphics[scale=0.5]{logo}}{\invoiceNo}
+
+\twocolumnlayout{
+    \begin{infoSection}
+        \infoBox{Client}{\clientName \\
+                         Ruessenstrasse 11 \\
+                         6340 Baar }
+        \infoBox{Project}{Security Infrastructure }
+        \infoBox{Contact}{Ronnie Kristiansen}
+        \infoSub{\faMobilePhone}{\small\slshape +41(0)76'2070299}
+        \noalign{\addvspace{8ex}}
+        \infoBox{}{
+            {\large\raisebox{.55\height}\currencysym\huge\formatcurrency{\balance} \arrowbase} \\
+            {\small\color{subduedColor} due \duedate{\duein}}
+        }
+    \end{infoSection}
+}{
+    \begin{infoSection}
+        \infoBox{\arrowtarget Payable To}{
+            \me \\
+            Reinacherstrasse 117 \\
+            4053 Basel \\
+        }
+        \infoSub{\faCreditCard}{\small\slshape CH86 0900 0000 6018 4276 1}
+        %\infoSub{\faLink}{\small\slshape BTC 3Hx6w9v3miE8yw8Lz8HbFEkAVopcUDhUu8}
+        \infoSub{\faMobilePhone}{\small\slshape +41(0)76'5870606}
+        \infoSub{\tiny\faEnvelope}{\small\slshape \emaillink{v@vendetta.ch}}
+    \end{infoSection}
+}
+
+\drawarrow
+
+\addvspace{4ex}
+
+\begin{hoursItemizationWithProject}
+
+    \lineitemp{19.06.2018}{1}{140}{mba}{
+        \item Meeting in Baar}
+
+    \lineitemp{19.06.2018}{4.5}{140}{mba}{
+        \item Synology CalDav setup (Calendar) }
+
+    \lineitemp{10.07.2018}{1}{140}{mba}{
+        \item Backup Lenovo P51}
+
+    \lineitemp{10.07.2018}{3}{140}{mba}{
+        \item Update BIOS/UEFI, Install Qubes-OS 4}
+
+    \lineitemp{11.07.2018}{3}{140}{mba}{
+        \item Qubes-OS Basic Config/Updates/init}
+
+    \lineitemp{23.07.2018}{0.5}{140}{mba}{
+        \item Remote-Support: \\ Fixing BlueIris Storage problem}
+
+    \lineitemp{22.08.2018}{2}{140}{mba}{
+        \item SG-4860 Serial install OpnSense}
+
+    \lineitemp{22.08.2018}{2.5}{140}{mba}{
+        \item OpnSense initial Setup}
+
+    \pagebreak
+
+    \lineitemp{26.09.2018}{5}{140}{mba}{
+        \item Lenovo P51 Troubleshooting blackscreen}
+
+    \lineitemp{26.09.2018}{4}{140}{mba}{
+        \item SG-4860 Network Design}
+    
+    \\
+    
+    \lineitemp{}{5}{-140}{mba}{
+        \item deduction: Blackscreen Issue \\- mistake on my part }
+
+    \beginsummary
+
+    \summaryline{Total}{\currencysym\formatcurrency{\InvoiceTotal}}
+
+    \summaryline{Paid}{\currencysym\formatcurrency{0}}
+    \summaryline{Balance Due}{\currencysym\formatcurrency{\InvoiceTotal}} % not really any math support (yet)
+
+\end{hoursItemizationWithProject}
+
+\end{document}
